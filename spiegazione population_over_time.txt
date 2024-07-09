@@ -1,0 +1,9 @@
+Il dataset population_over_time è stato realizzato simlando l'evoluzione di una popolazione nel corso di 1000 anni, partendo con un gruppo iniziale di 40 26enni. Si prende un vettore che rappresenta le età, da 0 a 150 anni, assumendo che oltre i 150 anni si muoia automaticamente. Ogni anno si aumenta l'età della popolazione di un anno, traslando gli elementi del vettore. Per ogni individuo si stima la probabilità di essere deceduto tramite una funzione fornita come esempio da Chatgpt, cioè:
+pow(e, -(A + (B * pow(e, C * (i - 2)))))
+dove i è l'età in anni e le costanti sono:
+A = 0.0002
+B = 0.0001
+C = 0.1
+Ogni persona deceduta dopo aver simulato con l'estrazione di un numero nell'intervallo (0.0-1.0) porta alla riduzione di 1 del numero di individui della propria età.
+Ogni persona di età nell'intervallo (20-40) dell'anno trascorso che non sia morta contribuisce al pool di nuovi genitori con probabilità 4/età e dopo aver calcolato il numero di nuovi genitori simulando con questa probabilità per ogni individuo nel range d'età si divide per due (il numero di genitori necessari per far nascere un nuovo individuo) e si inserisce questo valore nel primo elemento del vettore, corrispondente al numero di persone di 0 anni.
+Alla fine della simulazione i risultati sembrano simili a quanto atteso con la curva esponenziale che ci si aspetta per la crescita numerica di una popolazione lasciata libera con risorse a sufficienza.
